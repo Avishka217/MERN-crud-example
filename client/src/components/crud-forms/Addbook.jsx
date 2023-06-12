@@ -5,18 +5,22 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import BookTable from "../table/Booktable";
 
+const api = axios.create({
+  baseURL: "http://localhost:4040/api",
+});
+
 const Addbook = () => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [category, setCategory] = useState("");
   const [price, setPrice] = useState("");
-    const [submitted, setSubmitted] = useState(false); 
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:4040/api/books", {
+      const response = await api.post(`/books`, {
         title,
         author,
         category,
@@ -25,22 +29,17 @@ const Addbook = () => {
 
       console.log("Book added:", response.data);
 
-      // Reset the form fields
       setTitle("");
       setAuthor("");
       setCategory("");
       setPrice("");
 
-      // Show success toast
       toast.success("Book added successfully!");
 
-      // Update submission status
       setSubmitted(true);
-
     } catch (error) {
       console.error("Error adding book:", error);
 
-      // Show error toast
       toast.error("Failed to add book.");
     }
   };
@@ -97,8 +96,6 @@ const Addbook = () => {
         </Button>
       </Form>
       <ToastContainer />
-
-     
     </div>
   );
 };
