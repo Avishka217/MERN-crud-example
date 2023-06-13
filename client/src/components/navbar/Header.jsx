@@ -4,7 +4,7 @@ import { Navbar, Nav } from "react-bootstrap";
 const Header = () => {
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#" style={{paddingLeft:"2rem"}}>React Axios CRUD </Navbar.Brand>
+      <Navbar.Brand href="#" style={{paddingLeft:"2rem"}}>Book Management System </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">
